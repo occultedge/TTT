@@ -151,6 +151,7 @@
 <option value="fongang">fongang</option>
 <option value="kien">kien</option>
 <option value="fongane">fongane</option>
+
             <!-- Continue adding all student names here... -->
         </select>
 
@@ -188,7 +189,6 @@
         <span class="timer" id="timer">0 ms</span>
     </form>
 </div>
-
 <script>
     const form = document.getElementById('talkToTeacherForm');
     const submitButton = document.getElementById('submitButton');
@@ -207,32 +207,32 @@
 
         submitButton.disabled = true;
 
-        // Send form data
+        // Send form data as JSONP
         const formData = new FormData(form);
         const queryString = new URLSearchParams(formData).toString();
-        const url = form.action + "?" + queryString;
+        const url = form.action + "?callback=handleResponse&" + queryString;
 
-        try {
-            const response = await fetch(url, { method: 'POST' });
-            if (response.ok) {
-                clearInterval(timerInterval); // Stop the timer only on successful submission
-                timer.textContent = '0 ms';
-                alert("Your question has been submitted successfully!");
-                form.reset();
-            } else {
-                alert("There was an error submitting your question. Please try again.");
-            }
-        } catch (error) {
-            alert("There was an error submitting your question. Please try again.");
-        } finally {
-            submitButton.disabled = false; // Enable the button after the attempt
-            if (!response || !response.ok) {
-                clearInterval(timerInterval); // Stop the timer if there’s an error
-                timer.textContent = '0 ms'; // Reset timer display
-            }
-        }
+        // Create a script tag for JSONP
+        const script = document.createElement('script');
+        script.src = url;
+        document.body.appendChild(script);
     };
+
+    // JSONP callback function
+    function handleResponse(response) {
+        clearInterval(timerInterval);
+        timer.textContent = '0 ms';
+        submitButton.disabled = false;
+
+        if (response.status === 'success') {
+            alert("Your question has been submitted successfully!");
+            form.reset();
+        } else {
+            alert("There was an error submitting your question. Please try again.");
+        }
+    }
 </script>
+
 
 </body>
 </html>
