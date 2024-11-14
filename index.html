@@ -59,11 +59,20 @@
         .submit-button[disabled] {
             background-color: #ccc;
         }
-        .timer {
-            display: inline-block;
-            font-size: 14px;
-            color: #555;
-            margin-left: 10px;
+        .funnel-container {
+            width: 100%;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+            position: relative;
+        }
+        .funnel-fill {
+            width: 0;
+            height: 100%;
+            background-color: #5cb85c;
+            transition: width 0.1s linear;
         }
     </style>
 </head>
@@ -76,7 +85,7 @@
         <select id="studentName" name="studentName" required>
             <option value="" disabled selected>Select your name</option>
             <option value="awah">awah</option>
-            <!-- Add all student names as options... -->
+            <!-- Continue adding student names... -->
         </select>
 
         <label for="module">Select Module:</label>
@@ -97,25 +106,32 @@
         <textarea id="question" name="question" required placeholder="Type your question here..."></textarea>
 
         <button type="submit" class="submit-button" id="submitButton">Send</button>
-        <span class="timer" id="timer">0 ms</span>
+        
+        <!-- Funnel-style progress bar -->
+        <div class="funnel-container">
+            <div class="funnel-fill" id="funnelFill"></div>
+        </div>
     </form>
 </div>
 
 <script>
     const form = document.getElementById('talkToTeacherForm');
     const submitButton = document.getElementById('submitButton');
-    const timer = document.getElementById('timer');
-    let timerInterval;
+    const funnelFill = document.getElementById('funnelFill');
+    let funnelInterval;
 
     form.onsubmit = async (e) => {
         e.preventDefault();
 
-        // Start the timer
-        let milliseconds = 0;
-        timerInterval = setInterval(() => {
-            milliseconds += 10;
-            timer.textContent = milliseconds + ' ms';
-        }, 10);
+        // Reset and start filling the funnel
+        funnelFill.style.width = "0";
+        let fillPercentage = 0;
+        funnelInterval = setInterval(() => {
+            if (fillPercentage < 100) {
+                fillPercentage += 1; // Adjust the speed of filling here if needed
+                funnelFill.style.width = fillPercentage + "%";
+            }
+        }, 30); // Adjust interval speed as needed for visual effect
 
         submitButton.disabled = true;
 
@@ -132,15 +148,18 @@
 
     // JSONP callback function
     function handleResponse(response) {
+        clearInterval(funnelInterval); // Stop filling the funnel
+
         if (response.status === 'success') {
-            clearInterval(timerInterval); // Stop the timer on success
-            timer.textContent = '0 ms';
-            submitButton.disabled = false;
-            alert("Your question has been submitted successfully!");
-            form.reset();
+            funnelFill.style.width = "100%"; // Fill the funnel to indicate completion
+            setTimeout(() => {
+                funnelFill.style.width = "0"; // Reset after showing success
+                submitButton.disabled = false;
+                alert("Your question has been submitted successfully!");
+                form.reset();
+            }, 500); // Delay to show the filled funnel for a moment
         } else {
-            clearInterval(timerInterval); // Stop the timer on error as well
-            timer.textContent = '0 ms';
+            funnelFill.style.width = "0"; // Reset the funnel on error
             submitButton.disabled = false;
             alert("There was an error submitting your question. Please try again.");
         }
