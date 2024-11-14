@@ -257,65 +257,27 @@
         const url = form.action + "?" + queryString;
 
         try {
-            const response = await fetch(url, { method: 'POST' });
-            if (response.ok) {
-                alert("Your question has been submitted successfully!");
-                form.reset();
-            } else {
-                alert("There was an error submitting your question. Please try again.");
-            }
-        } catch (error) {
-            alert("There was an error submitting your question. Please try again.");
-        } finally {
-            clearInterval(timerInterval);
-            timer.textContent = '0 ms';
-            submitButton.disabled = false;
-        }
-    };
-</script>
-<script>
-    const form = document.getElementById('talkToTeacherForm');
-    const submitButton = document.getElementById('submitButton');
-    const timer = document.getElementById('timer');
-    let timerInterval;
-
-    form.onsubmit = (e) => {
-        e.preventDefault();
-
-        // Start timer
-        let milliseconds = 0;
-        timerInterval = setInterval(() => {
-            milliseconds += 10;
-            timer.textContent = milliseconds + ' ms';
-        }, 10);
-
-        submitButton.disabled = true;
-
-        // Send form data as JSONP
-        const formData = new FormData(form);
-        const queryString = new URLSearchParams(formData).toString();
-        const url = form.action + "?callback=handleResponse&" + queryString;
-
-        // Create a script tag for JSONP
-        const script = document.createElement('script');
-        script.src = url;
-        document.body.appendChild(script);
-    };
-
-    // JSONP callback function
-    function handleResponse(response) {
-        clearInterval(timerInterval); // Stop the timer once the response is received
+    const response = await fetch(url, { method: 'POST' });
+    if (response.ok) {
+        clearInterval(timerInterval); // Stop the timer only on successful submission
         timer.textContent = '0 ms';
-        submitButton.disabled = false;
-
-        if (response.status === 'success') {
-            alert("Your question has been submitted successfully!");
-            form.reset();
-        } else {
-            alert("There was an error submitting your question. Please try again.");
-        }
+        alert("Your question has been submitted successfully!");
+        form.reset();
+    } else {
+        alert("There was an error submitting your question. Please try again.");
     }
+} catch (error) {
+    alert("There was an error submitting your question. Please try again.");
+} finally {
+    submitButton.disabled = false; // Enable the button after the attempt
+    // Only reset the timer display in the finally block without stopping the timer
+    if (!response.ok) {
+        timer.textContent = '0 ms'; // Reset display if submission failed
+    }
+}
+
 </script>
+
 
 </body>
 </html>
