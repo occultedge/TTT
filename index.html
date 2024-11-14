@@ -198,13 +198,7 @@
     form.onsubmit = async (e) => {
         e.preventDefault();
 
-        // Start timer
-        let milliseconds = 0;
-        timerInterval = setInterval(() => {
-            milliseconds += 10;
-            timer.textContent = milliseconds ;
-        }, 10);
-
+      
         submitButton.disabled = true;
 
         // Send form data as JSONP
