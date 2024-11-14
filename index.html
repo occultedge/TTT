@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to Teacher Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .submit-button {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-button[disabled] {
+            background-color: #ccc;
+        }
+        .timer {
+            display: inline-block;
+            font-size: 14px;
+            color: #555;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Talk to Teacher</h2>
+    <form id="talkToTeacherForm" action="https://script.google.com/macros/s/AKfycbzd6etsF1_djfNLAyVJh4_vpyEFGUT4ZzwRFEwguFVEBapLgB0YxmE9HPR0D_3kZBBGDw/exec" method="POST">
+        <label for="studentName">Select Your Name:</label>
+        <select id="studentName" name="studentName" required>
+            <option value="" disabled selected>Select your name</option>
+            <!-- Paste the student names below, one per <option> -->
+           <option value="awah">awah</option>
+<option value="balog">balog</option>
+<option value="fonjo">fonjo</option>
+<option value="kongnyuy">kongnyuy</option>
+<option value="kudi">kudi</option>
+<option value="ledru">ledru</option>
+<option value="mbiandun">mbiandun</option>
+<option value="mbom">mbom</option>
+<option value="metila">metila</option>
+<option value="ndikum">ndikum</option>
+<option value="ngum">ngum</option>
+<option value="ova'a">ova'a</option>
+<option value="simo">simo</option>
+<option value="nkamenyi">nkamenyi</option>
+<option value="nchotu">nchotu</option>
+<option value="tchuembou">tchuembou</option>
+<option value="ananfa">ananfa</option>
+<option value="bakwowi">bakwowi</option>
+<option value="song">song</option>
+<option value="beyala">beyala</option>
+<option value="lincy">lincy</option>
+<option value="birwe">birwe</option>
+<option value="mc eward">mc eward</option>
+<option value="young">young</option>
+<option value="ondike">ondike</option>
+<option value="kikwi">kikwi</option>
+<option value="presious">presious</option>
+<option value="chiaka">chiaka</option>
+<option value="etoundi">etoundi</option>
+<option value="ban">ban</option>
+<option value="yomi">yomi</option>
+<option value="nkouakep">nkouakep</option>
+<option value="mamba">mamba</option>
+<option value="mugeh">mugeh</option>
+<option value="bangwen">bangwen</option>
+<option value="pangwa">pangwa</option>
+<option value="noukoua">noukoua</option>
+<option value="achongwa">achongwa</option>
+<option value="clareince">clareince</option>
+<option value="asamyame">asamyame</option>
+<option value="agbor">agbor</option>
+<option value="wondje">wondje</option>
+<option value="mosama">mosama</option>
+<option value="ayuk-enow">ayuk-enow</option>
+<option value="toh">toh</option>
+<option value="neba">neba</option>
+<option value="fehny">fehny</option>
+<option value="fofe">fofe</option>
+<option value="nyemb">nyemb</option>
+<option value="aboudou">aboudou</option>
+<option value="nga">nga</option>
+<option value="kenmogne">kenmogne</option>
+<option value="ngong">ngong</option>
+<option value="tayo">tayo</option>
+<option value="bong">bong</option>
+<option value="tizee">tizee</option>
+<option value="tchoh">tchoh</option>
+<option value="wain">wain</option>
+<option value="azefack">azefack</option>
+<option value="ateyim">ateyim</option>
+<option value="fuhnui">fuhnui</option>
+<option value="lonkeng">lonkeng</option>
+<option value="tendong">tendong</option>
+<option value="kinyuy">kinyuy</option>
+<option value="nfor">nfor</option>
+<option value="wako">wako</option>
+<option value="mebe">mebe</option>
+<option value="gribone">gribone</option>
+<option value="nsouanfouo">nsouanfouo</option>
+<option value="jeuro">jeuro</option>
+<option value="kwilauin">kwilauin</option>
+<option value="dongue">dongue</option>
+<option value="fongang">fongang</option>
+<option value="kien">kien</option>
+<option value="fongane">fongane</option>
+
+            <!-- Continue adding all student names here... -->
+        </select>
+
+        <label for="module">Select Module:</label>
+        <select id="module" name="module" required>
+            <option value="" disabled selected>Select module</option>
+            <option value="ICT I">ICT I</option>
+            <option value="Functional English">Functional English</option>
+            <option value="Medical Sociology and Anthropology">Medical Sociology and Anthropology</option>
+            <option value="General Biochemistry">General Biochemistry</option>
+            <option value="General Microbiology and Parasitology">General Microbiology and Parasitology</option>
+            <option value="General Pharmacology I">General Pharmacology I</option>
+            <option value="Anatomy and Physiology IA">Anatomy and Physiology IA</option>
+            <option value="Health Care Ethics">Health Care Ethics</option>
+            <option value="Medico Sanitary Techniques">Medico Sanitary Techniques</option>
+            <option value="Medical Law and Citizenship">Medical Law and Citizenship</option>
+            <option value="Anatomy and Physiology IB">Anatomy and Physiology IB</option>
+        </select>
+
+        <label for="teacher">Select Teacher:</label>
+        <select id="teacher" name="teacher" required>
+            <option value="" disabled selected>Select teacher</option>
+            <option value="Mr. Sundaram">Mr. Sundaram</option>
+            <option value="Ms Aanchal">Ms Aanchal</option>
+            <option value="Ms Kavita">Ms Kavita</option>
+            <option value="Ms Jolene">Ms Jolene</option>
+            <option value="Ms Yamini">Ms Yamini</option>
+            <option value="Ms Dipali">Ms Dipali</option>
+        </select>
+
+        <label for="question">Your Question/Query/Comment:</label>
+        <textarea id="question" name="question" required placeholder="Type your question here..."></textarea>
+
+        <button type="submit" class="submit-button" id="submitButton">Send</button>
+        <span class="timer" id="timer">0 ms</span>
+    </form>
+</div>
+<script>
+    const form = document.getElementById('talkToTeacherForm');
+    const submitButton = document.getElementById('submitButton');
+    const timer = document.getElementById('timer');
+    let timerInterval;
+
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+
+        // Start timer
+        let milliseconds = 0;
+        timerInterval = setInterval(() => {
+            milliseconds += 10;
+            timer.textContent = milliseconds + ' ms';
+        }, 10);
+
+        submitButton.disabled = true;
+
+        // Send form data as JSONP
+        const formData = new FormData(form);
+        const queryString = new URLSearchParams(formData).toString();
+        const url = form.action + "?callback=handleResponse&" + queryString;
+
+        // Create a script tag for JSONP
+        const script = document.createElement('script');
+        script.src = url;
+        document.body.appendChild(script);
+    };
+
+    // JSONP callback function
+    function handleResponse(response) {
+        clearInterval(timerInterval);
+        timer.textContent = '0 ms';
+        submitButton.disabled = false;
+
+        if (response.status === 'success') {
+            alert("Your question has been submitted successfully!");
+            form.reset();
+        } else {
+            alert("There was an error submitting your question. Please try again.");
+        }
+    }
+</script>
+
+<script>
+    const form = document.getElementById('talkToTeacherForm');
+    const submitButton = document.getElementById('submitButton');
+    const timer = document.getElementById('timer');
+    let timerInterval;
+
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+
+        // Start timer
+        let milliseconds = 0;
+        timerInterval = setInterval(() => {
+            milliseconds += 10;
+            timer.textContent = milliseconds + ' ms';
+        }, 10);
+
+        submitButton.disabled = true;
+
+        // Send form data
+        const formData = new FormData(form);
+        const queryString = new URLSearchParams(formData).toString();
+        const url = form.action + "?" + queryString;
+
+        try {
+            const response = await fetch(url, { method: 'POST' });
+            if (response.ok) {
+                alert("Your question has been submitted successfully!");
+                form.reset();
+            } else {
+                alert("There was an error submitting your question. Please try again.");
+            }
+        } catch (error) {
+            alert("There was an error submitting your question. Please try again.");
+        } finally {
+            clearInterval(timerInterval);
+            timer.textContent = '0 ms';
+            submitButton.disabled = false;
+        }
+    };
+</script>
+
+</body>
+</html>
