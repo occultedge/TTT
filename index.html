@@ -71,20 +71,18 @@
 
 <div class="form-container">
     <h2>Talk to Teacher</h2>
-    <form id="talkToTeacherForm" action="https://script.google.com/macros/s/AKfycbzd6etsF1_djfNLAyVJh4_vpyEFGUT4ZzwRFEwguFVEBapLgB0YxmE9HPR0D_3kZBBGDw/exec" method="POST">
+    <form id="talkToTeacherForm" action="https://script.google.com/macros/s/AKfycbzd6etsF1_djfNLAyVJh4_vpyEFGUT4ZzwRFEwguFVEBapLgB0YxmE9HPR0D_3kZBBGDw/exec" method="GET">
         <label for="studentName">Select Your Name:</label>
         <select id="studentName" name="studentName" required>
             <option value="" disabled selected>Select your name</option>
-            <!-- Student names here -->
             <option value="awah">awah</option>
-            <!-- Continue adding all student names... -->
+            <!-- Add all student names as options... -->
         </select>
 
         <label for="module">Select Module:</label>
         <select id="module" name="module" required>
             <option value="" disabled selected>Select module</option>
             <option value="ICT I">ICT I</option>
-            <option value="Functional English">Functional English</option>
             <!-- Add other modules as options... -->
         </select>
 
@@ -92,7 +90,6 @@
         <select id="teacher" name="teacher" required>
             <option value="" disabled selected>Select teacher</option>
             <option value="Mr. Sundaram">Mr. Sundaram</option>
-            <option value="Ms Aanchal">Ms Aanchal</option>
             <!-- Add other teachers as options... -->
         </select>
 
@@ -135,15 +132,16 @@
 
     // JSONP callback function
     function handleResponse(response) {
-        // Stop the timer
-        clearInterval(timerInterval);
-        timer.textContent = '0 ms';
-        submitButton.disabled = false;
-
         if (response.status === 'success') {
+            clearInterval(timerInterval); // Stop the timer on success
+            timer.textContent = '0 ms';
+            submitButton.disabled = false;
             alert("Your question has been submitted successfully!");
             form.reset();
         } else {
+            clearInterval(timerInterval); // Stop the timer on error as well
+            timer.textContent = '0 ms';
+            submitButton.disabled = false;
             alert("There was an error submitting your question. Please try again.");
         }
     }
