@@ -202,7 +202,7 @@
         let milliseconds = 0;
         timerInterval = setInterval(() => {
             milliseconds += 10;
-            timer.textContent = milliseconds + ' ms';
+            timer.textContent = milliseconds ;
         }, 10);
 
         submitButton.disabled = true;
@@ -221,7 +221,7 @@
     // JSONP callback function
     function handleResponse(response) {
         clearInterval(timerInterval);
-        timer.textContent = '0 ms';
+        timer.textContent = '0';
         submitButton.disabled = false;
 
         if (response.status === 'success') {
